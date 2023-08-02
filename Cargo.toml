@@ -1,0 +1,40 @@
+[package]
+name = "embedded-tsdb"
+version = "0.1.0"
+edition = "2021"
+authors = ["zifeng.1024@gmail.com"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[workspace]
+members = [
+    "crates/types",
+    "crates/storage",
+    "crates/meta",
+    "crates/query-engine",
+    "cli",
+    "bin/server",
+    "bin/client",
+]
+
+#exclude = [
+#    "cli",
+#    "bin/server",
+#    "bin/client",
+#]
+
+[dependencies]
+tracing = { workdspace = true }
+thiserror = { workspace = true }
+
+
+[workspace.dependencies]
+tokio = { version = "1", features = ["full"] }
+arrow = "41.0.0"
+geoarrow = { package = "geoarrow2", version = "0.0.1" }
+datafusion = "26.0.0"
+sled = "0.34.7"
+tracing = "0.1.37"
+thiserror = "1.0.40"
+
+

@@ -1,0 +1,17 @@
+// Exec sql api
+syntax = "proto3";
+
+package exec;
+
+
+service Exec {
+  rpc exec(ExecRequest) returns (ExecReply);
+}
+
+message ExecRequest {
+  string sql = 1;
+}
+
+message ExecReply {
+
+}
