@@ -28,3 +28,8 @@ jobs:
       with:
         command: build
         args: --package embedded-tsdb-server
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-output
+        path: target/debug/embedded-tsdb-server
