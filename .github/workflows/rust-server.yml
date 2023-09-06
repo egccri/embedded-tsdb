@@ -11,25 +11,32 @@ env:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        rust: [stable]
+        target: [armv7-unknown-linux-gnueabihf, i686-unknown-linux-gnu, s390x-unknown-linux-gnu]
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
     - name: Setup Rust
       uses: actions-rs/toolchain@v1
       with:
-        toolchain: stable
+        toolchain: ${{ matrix.rust }}
         override: true
+    - name: Install Cross
+      run: cargo install cross
     - name: Install Protobuf Compiler
       run: sudo apt-get install -y protobuf-compiler
     - name: Build
       uses: actions-rs/cargo@v1
       with:
         command: build
-        args: --package embedded-tsdb-server
+        args: --package embedded-tsdb-server --target ${{ matrix.target }}
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
-        name: build-output
-        path: target/debug/embedded-tsdb-server
+        name: build-output-${{ matrix.target }}
+        path: target/${{ matrix.target }}/debug/embedded-tsdb-server
