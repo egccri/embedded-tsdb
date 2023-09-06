@@ -41,9 +41,9 @@ jobs:
       run: sudo apt-get install -y protobuf-compiler
 
     - name: Check project directory
-      run: ls -la /project
+      run: ls -la . # Check the current directory instead of /project
     - name: Build
-      run: cross build --manifest-path /project/embedded-tsdb/Cargo.toml --package embedded-tsdb-server --target ${{ matrix.target }}
+      run: cross build --manifest-path Cargo.toml --package embedded-tsdb-server --target ${{ matrix.target }}
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
