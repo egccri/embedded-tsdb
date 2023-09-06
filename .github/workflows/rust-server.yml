@@ -42,8 +42,8 @@ jobs:
     - name: Build
       uses: actions-rs/cargo@v1
       with:
-        command: build
-        args: --package embedded-tsdb-server --target ${{ matrix.target }}
+        command: cross
+        args: build --package embedded-tsdb-server --target ${{ matrix.target }}
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
