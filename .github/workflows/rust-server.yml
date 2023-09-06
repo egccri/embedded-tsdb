@@ -40,7 +40,7 @@ jobs:
     - name: Install Protobuf Compiler
       run: sudo apt-get install -y protobuf-compiler
     - name: Build
-      run: cross build --package embedded-tsdb-server --target ${{ matrix.target }}
+      run: cross build -manifest-path /project/embedded-tsdb/Cargo.toml --package embedded-tsdb-server --target ${{ matrix.target }}
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
