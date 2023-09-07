@@ -12,16 +12,16 @@ members = [
     "crates/storage",
     "crates/meta",
     "crates/query-engine",
+#    "cli",
+#    "bin/server",
+#    "bin/client",
+]
+
+exclude = [
     "cli",
     "bin/server",
     "bin/client",
 ]
-
-#exclude = [
-#    "cli",
-#    "bin/server",
-#    "bin/client",
-#]
 
 [dependencies]
 tracing = { workdspace = true }
