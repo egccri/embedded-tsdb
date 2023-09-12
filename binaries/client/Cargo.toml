@@ -10,7 +10,7 @@ name = "embedded-tsdb-client"
 path = "src/main.rs"
 
 [dependencies]
-cli = { path = "../../cli" }
+cli = { path = "../../cli", default-features = false }
 tokio = { version = "1", features = ["full"] }
 tonic = "0.9.2"
 prost = "0.11.9"

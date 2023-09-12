@@ -1,0 +1,51 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        rust: [stable]
+        target: [armv7-unknown-linux-gnueabihf, i686-unknown-linux-gnu, s390x-unknown-linux-gnu]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Docker
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+        sudo apt-get update
+        sudo apt-get install -y docker-ce
+    - name: Setup Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: ${{ matrix.rust }}
+        target: ${{ matrix.target }}
+        override: true
+    - name: Install Cross
+      run: cargo install cross
+    - name: Install Protobuf Compiler
+      run: sudo apt-get install -y protobuf-compiler
+
+#    - name: Check project directory
+#      run: ls -la . # Check the current directory instead of /project
+    - name: Build
+      run: cross build --manifest-path Cargo.toml --package embedded-tsdb-server --target ${{ matrix.target }}
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-output-${{ matrix.target }}
+        path: target/${{ matrix.target }}/debug/embedded-tsdb-server

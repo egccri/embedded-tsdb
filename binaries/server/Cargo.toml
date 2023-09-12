@@ -6,8 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-cli = { path = "../../cli" }
-embedded-tsdb = { path = "../../../embedded-tsdb" }
+cli = { path = "../../cli", default-features = false }
+embedded-tsdb = { path = "../../embedded-tsdb" }
 tokio = { version = "1", features = ["full"] }
 tonic = "0.9.2"
 prost = "0.11.9"
