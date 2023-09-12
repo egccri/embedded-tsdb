@@ -15,7 +15,6 @@ exclude = [
 #    "binaries/client",
 ]
 
-
 [workspace.dependencies]
 tokio = { version = "1", features = ["full"] }
 arrow = "41.0.0"
@@ -24,5 +23,3 @@ datafusion = "26.0.0"
 sled = "0.34.7"
 tracing = "0.1.37"
 thiserror = "1.0.40"
-
-
