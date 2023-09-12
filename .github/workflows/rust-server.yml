@@ -40,8 +40,8 @@ jobs:
     - name: Install Protobuf Compiler
       run: sudo apt-get install -y protobuf-compiler
 
-    - name: Check project directory
-      run: ls -la . # Check the current directory instead of /project
+#    - name: Check project directory
+#      run: ls -la . # Check the current directory instead of /project
     - name: Build
       run: cross build --manifest-path Cargo.toml --package embedded-tsdb-server --target ${{ matrix.target }}
     - name: Upload Artifact

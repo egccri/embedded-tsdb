@@ -1,31 +1,19 @@
-[package]
-name = "embedded-tsdb"
-version = "0.1.0"
-edition = "2021"
-authors = ["zifeng.1024@gmail.com"]
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [workspace]
 members = [
     "crates/types",
     "crates/storage",
     "crates/meta",
     "crates/query-engine",
-    "cli",
-    "bin/server",
-    "bin/client",
+    "embedded-tsdb",
+    "binaries/server",
+    "binaries/client",
 ]
 
-#exclude = [
-#    "cli",
-#    "bin/server",
-#    "bin/client",
-#]
-
-[dependencies]
-tracing = { workdspace = true }
-thiserror = { workspace = true }
+exclude = [
+    "cli",
+#    "binaries/server",
+#    "binaries/client",
+]
 
 
 [workspace.dependencies]
