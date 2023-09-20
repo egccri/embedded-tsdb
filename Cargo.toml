@@ -22,5 +22,5 @@ arrow = "41.0.0"
 geoarrow = { package = "geoarrow2", version = "0.0.1" }
 datafusion = "26.0.0"
 sled = "0.34.7"
-tracing = "0.1.37"
+tracing = "0.1"
 thiserror = "1.0.40"
