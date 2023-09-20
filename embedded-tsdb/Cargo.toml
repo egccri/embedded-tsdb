@@ -6,7 +6,7 @@ description = "Light-weight embedded TSDB."
 documentation = "https://docs.rs/embedded-tsdb"
 license = "Apache-2.0"
 repository = "https://github.com/egccri/mbedded-tsdb"
-readme = "README.md"
+readme = "../README.md"
 authors = ["The embedded-tsdb authors."]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

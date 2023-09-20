@@ -1,4 +1,5 @@
 [workspace]
+resilver = "2"
 members = [
     "crates/types",
     "crates/storage",
