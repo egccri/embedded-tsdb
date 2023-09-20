@@ -1,5 +1,5 @@
 [workspace]
-resilver = "2"
+resolver = "2"
 members = [
     "crates/types",
     "crates/storage",
