@@ -8,6 +8,7 @@ members = [
     "embedded-tsdb",
     "binaries/server",
     "binaries/client",
+    "cli",
 ]
 
 exclude = [
@@ -17,10 +18,10 @@ exclude = [
 ]
 
 [workspace.dependencies]
-tokio = { version = "1", features = ["full"] }
-arrow = "41.0.0"
+tokio = { version = "1" }
+arrow = "46.0.0"
 geoarrow = { package = "geoarrow2", version = "0.0.1" }
-datafusion = "26.0.0"
+datafusion = "31.0.0"
 sled = "0.34.7"
-tracing = "0.1"
+tracing = "0.1.37"
 thiserror = "1.0.40"
