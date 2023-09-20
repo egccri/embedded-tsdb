@@ -12,8 +12,8 @@ members = [
 
 exclude = [
     "cli",
-#    "binaries/server",
-#    "binaries/client",
+    "binaries/server",
+    "binaries/client",
 ]
 
 [workspace.dependencies]
