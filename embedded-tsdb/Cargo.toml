@@ -12,5 +12,5 @@ authors = ["The embedded-tsdb authors."]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-#tracing = { workdspace = true }
+tracing = { workdspace = true }
 thiserror = { workspace = true }
